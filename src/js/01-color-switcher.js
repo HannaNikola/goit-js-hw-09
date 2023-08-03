@@ -16,17 +16,18 @@ function getRandomHexColor() {
 
 
 function getColorBtn(event) {
+   
     timerId = setInterval(() => {
         const newColor = getRandomHexColor();
         body.style.backgroundColor = newColor;
     }, 1000);
-   
-    
+    startButton.disabled = true;
     
 };
 
 function stopColorBtn(event) {
     clearInterval(timerId);
+    startButton.disabled = false;
 }
 
 
