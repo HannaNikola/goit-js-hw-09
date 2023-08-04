@@ -21,13 +21,14 @@ function getColorBtn(event) {
         const newColor = getRandomHexColor();
         body.style.backgroundColor = newColor;
     }, 1000);
-    startButton.disabled = true;
+    buttonStart.disabled = true;
     
 };
 
 function stopColorBtn(event) {
+   
     clearInterval(timerId);
-    startButton.disabled = false;
+    buttonStart.disabled = false;
 }
 
 
