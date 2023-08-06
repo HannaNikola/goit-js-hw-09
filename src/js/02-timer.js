@@ -7,7 +7,6 @@ const dataDayEl = document.querySelector('span[data-days]');
 const dataHourEl = document.querySelector('span[data-hours]');
 const dataMinuteEl = document.querySelector('span[data-minutes]');
 const dateSecondsEl = document.querySelector('span[data-seconds]');
-console.log(dataDayEl);
 
 
 
@@ -17,22 +16,21 @@ const options = {
     defaultDate: new Date(),
     minuteIncrement: 1,
     onClose(selectedDates) {
-       
+
         if (selectedDates[0] <= new Date()) {
             window.alert("Please choose a date in the future");
             buttonStart.disabled = true;
         } else {
             buttonStart.disabled = false;
-            buttonStart.addEventListener('click', countInterval)
+            buttonStart.addEventListener('click', countInterval(selectedDates[0]))
         }
-        
-        console.log(selectedDates[0]);
+
+        console.log("selected dates ", selectedDates[0]);
         console.log(this.onClose);
     },
 };
 
-flatpickr(inputDataTime, options);
-
+flatpickr(inputDataTime, options)
 
 
 function convertMs(ms) {
@@ -60,31 +58,32 @@ function addLeadingZero(value) {
 }
 
 
-function countInterval() {
-
+function countInterval(selectedDate) {
     const timerId = setInterval(() => {
-        const newtTime = Date.now();
-        const currentTime = convertMs(selectedDates - newtTime);
-        const currentDay = addLeadingZero(currentTime.getDay());
-        const currentHour = addLeadingZero(currentTime.getHours());
-        const currentMinet = addLeadingZero(currentTime.getMinutes());
-        const currentSecond = addLeadingZero(currentTime.getSeconds());
+        const currentDate = Date.now();
 
-        
-      
+        const diff = convertMs(selectedDate - currentDate)
+
+        const currentDay = addLeadingZero(diff.days);
+        const currentHour = addLeadingZero(diff.hours);
+        const currentMinet = addLeadingZero(diff.minutes);
+        const currentSecond = addLeadingZero(diff.seconds);
+
+
+
         dataDayEl.textContent = currentDay;
         dataHourEl.textContent = currentHour;
         dataMinuteEl.textContent = currentMinet;
         dateSecondsEl.textContent = currentSecond;
 
-       
-        
-        
+
+
+
 
     }, 1000)
 
-    
-    // clearInterval(timerId)
+
+    clearInterval(timerId)
 
 
 
