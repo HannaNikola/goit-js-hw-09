@@ -63,8 +63,8 @@ function countInterval(selectedDate) {
     const timerId = setInterval(() => {
         const currentDate = Date.now();
 
-        const diff = convertMs(selectedDate - currentDate)
-
+        const diff = convertMs(selectedDate - currentDate);
+        
         const currentDay = addLeadingZero(diff.days);
         const currentHour = addLeadingZero(diff.hours);
         const currentMinet = addLeadingZero(diff.minutes);
@@ -75,8 +75,11 @@ function countInterval(selectedDate) {
         dataMinuteEl.textContent = currentMinet;
         dateSecondsEl.textContent = currentSecond;
 
-        if (diff <= 0) {
+        if (diff.days <= 0 && diff.hours <= 0 && diff.minutes <= 0 && diff.seconds <= 0) {
             stopInterval();
+            clearInterval(timerId);
+
+           
         }
         
     }, 1000);
@@ -85,4 +88,6 @@ function countInterval(selectedDate) {
 };
 function stopInterval() {
     clearInterval(timerId);
+    console.log();
 };
+
