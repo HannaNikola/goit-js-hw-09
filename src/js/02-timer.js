@@ -76,16 +76,15 @@ function countInterval(selectedDate) {
         dataMinuteEl.textContent = currentMinet;
         dateSecondsEl.textContent = currentSecond;
 
+        if (diff <= 0) {
+            stopInterval();
+           
+        }
+    }, 1000);
 
+    
+};
 
-
-
-    }, 1000)
-
-
-    clearInterval(timerId)
-
-
-
-}
-
+function stopInterval() {
+    clearInterval(timerId);
+};

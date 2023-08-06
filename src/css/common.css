@@ -26,6 +26,14 @@ gap: 30px;
 font-size: 50px;
 }
 
-/* #datetime-picker{
-  background-color: green;
-} */
+.input-time {
+padding: 5px;
+}
+
+.button-start {
+background-color: green;
+padding: 5px;
+border-radius: 3px;
+border: 1px solid transparent ;
+width: 70px;
+}
