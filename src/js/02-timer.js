@@ -69,8 +69,6 @@ function countInterval(selectedDate) {
         const currentMinet = addLeadingZero(diff.minutes);
         const currentSecond = addLeadingZero(diff.seconds);
 
-
-
         dataDayEl.textContent = currentDay;
         dataHourEl.textContent = currentHour;
         dataMinuteEl.textContent = currentMinet;
@@ -78,13 +76,12 @@ function countInterval(selectedDate) {
 
         if (diff <= 0) {
             stopInterval();
-           
         }
+        
     }, 1000);
 
-    
+   
 };
-
 function stopInterval() {
     clearInterval(timerId);
 };
