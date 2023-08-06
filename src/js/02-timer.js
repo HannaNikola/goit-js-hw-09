@@ -7,9 +7,9 @@ const dataDayEl = document.querySelector('span[data-days]');
 const dataHourEl = document.querySelector('span[data-hours]');
 const dataMinuteEl = document.querySelector('span[data-minutes]');
 const dateSecondsEl = document.querySelector('span[data-seconds]');
+console.log(dataDayEl);
 
 
-let countDownInterval = null;
 
 const options = {
     enableTime: true,
@@ -23,7 +23,7 @@ const options = {
             buttonStart.disabled = true;
         } else {
             buttonStart.disabled = false;
-            addEventListener('click', countInterval)
+            buttonStart.addEventListener('click', countInterval)
         }
         
         console.log(selectedDates[0]);
@@ -59,14 +59,33 @@ function addLeadingZero(value) {
     return String(value).padStart(2, "0");
 }
 
+
 function countInterval() {
 
     const timerId = setInterval(() => {
+        const newtTime = Date.now();
+        const currentTime = convertMs(selectedDates - newtTime);
+        const currentDay = addLeadingZero(currentTime.getDay());
+        const currentHour = addLeadingZero(currentTime.getHours());
+        const currentMinet = addLeadingZero(currentTime.getMinutes());
+        const currentSecond = addLeadingZero(currentTime.getSeconds());
 
-        const now = Date.now();
-        const counter = selectedDates[0] - now;
+        
+      
+        dataDayEl.textContent = currentDay;
+        dataHourEl.textContent = currentHour;
+        dataMinuteEl.textContent = currentMinet;
+        dateSecondsEl.textContent = currentSecond;
+
+       
+        
+        
 
     }, 1000)
+
+    
+    // clearInterval(timerId)
+
 
 
 }
