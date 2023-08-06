@@ -19,7 +19,8 @@ const options = {
     onClose(selectedDates) {
 
         if (selectedDates[0] <= new Date()) {
-            window.alert("Please choose a date in the future");
+            // window.alert("Please choose a date in the future");
+            Notiflix.Notify.warning('Please choose a date in the future');
             buttonStart.disabled = true;
         } else {
             buttonStart.disabled = false;
@@ -88,6 +89,6 @@ function countInterval(selectedDate) {
 };
 function stopInterval() {
     clearInterval(timerId);
-    console.log();
+    Notiflix.Notify.success('Countdown has finished!');
 };
 
