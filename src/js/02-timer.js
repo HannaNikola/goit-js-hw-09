@@ -1,5 +1,6 @@
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
+import Notiflix from 'notiflix';
 
 const inputDataTime = document.querySelector('#datetime-picker');
 const buttonStart = document.querySelector('button[data-start]');
@@ -7,7 +8,7 @@ const dataDayEl = document.querySelector('span[data-days]');
 const dataHourEl = document.querySelector('span[data-hours]');
 const dataMinuteEl = document.querySelector('span[data-minutes]');
 const dateSecondsEl = document.querySelector('span[data-seconds]');
-
+let timerId;
 
 
 const options = {
