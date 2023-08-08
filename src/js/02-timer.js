@@ -19,7 +19,6 @@ const options = {
     onClose(selectedDates) {
 
         if (selectedDates[0] <= new Date()) {
-            // window.alert("Please choose a date in the future");
             Notiflix.Notify.warning('Please choose a date in the future');
             buttonStart.disabled = true;
         } else {
