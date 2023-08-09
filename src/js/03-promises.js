@@ -29,6 +29,12 @@ formElement.addEventListener('submit', (event) => {
   const delay = parseInt(inputFirstDelay.value);
   const step = parseInt(inputDelayStep.value);
 
+  if (step < 0 || delay < 0 || amount <= 0) {
+    Notiflix.Notify.warning('Invalid input values. Please enter valid values.');
+    return; 
+  }
+
+
   let currentDelay = delay;
 
   for (let i = 1; i <= amount; i++){
@@ -48,3 +54,6 @@ formElement.addEventListener('submit', (event) => {
 
 
 });
+
+
+// якщо step <0 або delay <0 або  amount <=0 показуємо нотифікашку і не рендеримо проміси
