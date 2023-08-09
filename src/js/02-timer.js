@@ -9,7 +9,7 @@ const dataHourEl = document.querySelector('span[data-hours]');
 const dataMinuteEl = document.querySelector('span[data-minutes]');
 const dateSecondsEl = document.querySelector('span[data-seconds]');
 let timerId;
-
+buttonStart.disabled = false;
 
 const options = {
     enableTime: true,
@@ -20,9 +20,9 @@ const options = {
 
         if (selectedDates[0] <= new Date()) {
             Notiflix.Notify.warning('Please choose a date in the future');
-            buttonStart.disabled = true;
-        } else {
             buttonStart.disabled = false;
+        } else {
+            buttonStart.disabled = true;
             buttonStart.addEventListener('click', countInterval(selectedDates[0]))
         }
 
